@@ -1,0 +1,283 @@
+/* General styles for the page */
+body {
+    font-family: Arial, sans-serif; /* Sets the default font for the page */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Light gray background color */
+    background-image: url('images/bg.jpg'); /* Background image for the page */
+    background-size: cover; /* Scales the background image to cover the entire page */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-attachment: fixed; /* Fixes the background image in place during scrolling */
+    display: flex; /* Uses flexbox layout to center the content */
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+    height: 100vh; /* Sets the height to the full viewport height */
+    cursor: url('images/cursor-2.png'), default; /* Custom cursor for the page */
+}
+
+/* Styles for the navigation bar */
+.navbar {
+    width: 100%; /* Full width of the screen */
+    max-width: 800px; /* Limits the maximum width of the navbar */
+    background-color: rgba(51, 51, 51, 0.7); /* Semi-transparent dark background */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow effect */
+    display: flex; /* Flexbox layout for alignment */
+    justify-content: center; /* Centers the content horizontally */
+    opacity: 0; /* Initially hidden */
+    transform: translateY(-20px); /* Positioned slightly above its final position */
+    transition: opacity 1.5s ease, transform 1.5s ease; /* Smooth transition for appearing */
+    position: fixed; /* Fixed at the top of the screen */
+    top: 0; /* Aligns with the top of the screen */
+    left: 50%; /* Centers the navbar horizontally */
+    transform: translate(-50%, -20px); /* Adjusts position to be centered */
+    z-index: 1000; /* Ensures the navbar appears above other elements */
+    border-radius: 15px; /* Rounds the corners of the navbar */
+    align-items: center; /* Centers items vertically within the navbar */
+}
+
+/* Shows the navbar by adjusting opacity and position */
+.navbar.show {
+    opacity: 1; /* Fully visible */
+    transform: translate(-50%, 0); /* Moves to its final position */
+}
+
+/* Styles for the overlay background */
+.overlay {
+    position: fixed; /* Fixed position covering the entire screen */
+    top: 0; /* Starts at the top of the viewport */
+    left: 0; /* Starts at the left of the viewport */
+    width: 100%; /* Full width of the viewport */
+    height: 100vh; /* Full height of the viewport */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    backdrop-filter: blur(5px); /* Adds a blur effect to the background */
+    z-index: 1; /* Ensures the overlay appears below the navbar */
+    display: none; /* Initially hidden */
+    transition: opacity 2.5s ease; /* Smooth transition for appearing */
+}
+
+/* Shows the overlay when needed */
+.overlay.show {
+    display: block; /* Makes the overlay visible */
+    transition: opacity 2.5s ease; /* Smooth transition for opacity */
+}
+
+/* Container for the navbar's content */
+.navbar-container {
+    max-width: 800px; /* Limits the maximum width */
+    width: 100%; /* Full width */
+    display: flex; /* Flexbox layout for alignment */
+    align-items: center; /* Centers content vertically */
+    justify-content: space-between; /* Spreads out items within the container */
+    padding: 10px 20px; /* Adds padding inside the container */
+    position: relative; /* Allows positioning of children elements */
+}
+
+/* Styles for the logo inside the navbar */
+.navbar-logo {
+    display: flex; /* Flexbox layout for alignment */
+    align-items: center; /* Centers content vertically */
+    color: white; /* White color for the logo text */
+}
+
+/* Styles for the logo image */
+.navbar-logo img {
+    height: 95px; /* Adjusts the size of the logo image */
+    vertical-align: middle; /* Aligns the image vertically with the text */
+}
+
+/* Styles for the website name next to the logo */
+.website-name {
+    margin-left: 10px; /* Adds space between the logo and the text */
+    font-size: 1.5em; /* Increases the text size */
+    color: white; /* White color for the text */
+    font-family: 'Cinzel', serif; /* Serif font for a classic look */
+    font-weight: 800; /* Bold text */
+    line-height: 1; /* Aligns the text vertically */
+}
+
+/* Navigation list styles */
+.nav-list {
+    list-style-type: none; /* Removes bullet points from the list */
+    margin: 0; /* Removes default margin */
+    padding: 0; /* Removes default padding */
+    display: flex; /* Flexbox layout for alignment */
+    justify-content: space-around; /* Spreads out the list items evenly */
+    align-items: center; /* Centers items vertically */
+}
+
+/* Styles for each navigation item */
+.nav-item {
+    position: relative; /* Allows positioning of dropdown menus */
+}
+
+/* Styles for navigation links */
+.nav-item a {
+    text-decoration: none; /* Removes underline from the links */
+    color: white; /* White color for the links */
+    padding: 15px 20px; /* Adds padding inside the links */
+    display: block; /* Makes the link a block-level element */
+    font-family: 'Libre Baskerville', serif; /* Serif font for a classic look */
+    font-size: 15px; /* Sets the font size */
+    transition: color 0.3s ease, transform 0.3s ease, text-decoration 0.3s ease; /* Smooth transition on hover */
+    border-radius: 10px; /* Rounds the corners of the links */
+}
+
+/* Hover effect for navigation links */
+.nav-item a:hover {
+    color: #d6b575; /* Changes text color on hover */
+    transform: scale(1.09); /* Slight zoom effect on hover */
+    text-decoration: underline; /* Adds underline on hover */
+    font-weight: bold; /* Makes text bold on hover */
+}
+
+/* Styles for dropdown containers */
+.dropdown {
+    position: relative; /* Positions dropdown menu relative to its parent */
+}
+
+/* Styles for the dropdown menu */
+.dropdown-menu {
+    display: none; /* Initially hidden */
+    position: absolute; /* Positions menu below the parent item */
+    top: 100%; /* Positions the menu directly below the parent */
+    left: -35%; /* Centers the menu horizontally */
+    background-color: rgba(51, 51, 51, 0.7); /* Semi-transparent dark background */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow effect */
+    list-style-type: none; /* Removes bullet points from the list */
+    margin: 0; /* Removes default margin */
+    padding: 0; /* Removes default padding */
+    min-width: 200px; /* Sets the minimum width of the dropdown menu */
+    z-index: 2; /* Ensures the menu appears above other content */
+    opacity: 0; /* Initially invisible */
+    transform: translateX(-50%) translateY(-10px); /* Slightly moves the menu up and to the left */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition on hover */
+}
+
+/* Styles for dropdown items */
+.dropdown-menu li a {
+    padding: 10px 15px; /* Adds padding inside the dropdown items */
+    text-align: center; /* Centers the text */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition on hover */
+    font-family: 'Libre Baskerville', serif; /* Serif font for a classic look */
+    font-size: 12.5px; /* Sets the font size */
+}
+
+/* Hover effect for dropdown items */
+.dropdown-menu li a:hover {
+    background-color: rgba(87, 87, 87, 0.5); /* Changes background color on hover */
+}
+
+/* Shows dropdown menu when hovering over the parent item */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block; /* Makes the dropdown menu visible */
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Moves to its final position */
+}
+
+/* Menu Icon for Mobile Devices*/
+.menu-icon {
+    display: none; /* Initially hidden */
+    flex-direction: column; /* Stacks the bars vertically */
+    justify-content: space-between; /* Evenly spaces the bars */
+    cursor: pointer; /* Pointer cursor to indicate clickability */
+    width: 30px; /* Sets the width of the icon */
+    height: 21px; /* Sets the height of the icon */
+    transition: transform 0.3s ease; /* Smooth transition on hover */
+}
+
+.bar1, .bar2, .bar3 {
+    width: 100%; /* Full width */
+    height: 3px; /* Thickness of the bars */
+    background-color: white; /* White color for the bars */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition */
+}
+
+/* Transformations for the menu icon when active */
+.menu-icon.change .bar1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.menu-icon.change .bar2 {
+    opacity: 0;
+}
+
+.menu-icon.change .bar3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Media query for screens with a max width of 768px (tablets and mobile) */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: flex; /* Makes the menu icon visible */
+    }
+
+    .nav-list {
+        position: fixed; /* Fixed at the top */
+        top: 70px; /* Aligned with the top */
+        left: 0; /* Aligned with the left */
+        width: 100%; /* Full width of the screen */
+        height: calc(100vh - 70px); /* Full height of the screen */
+        background-color: rgba(51, 51, 51, 0.7); /* Dark background */
+        backdrop-filter: blur(5px); /* Adds blur effect */
+        flex-direction: column; /* Stacks items vertically */
+        align-items: center; /* Centers items horizontally */
+        padding-top: 10px;
+        transform: translateX(-100%); /* Positioned above the screen */
+        transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition on opening */
+        overflow-y: auto;
+        z-index: 2; /* Ensures it appears above other elements */
+    }
+
+    .navbar-logo img {
+        height: 50px; /* Adjust this value to make the logo larger */
+        vertical-align: middle;
+        transition: transform 0.3s ease;
+    }
+
+    .nav-item a {
+        padding: 20px 30px;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 5px;
+        display: block;
+        transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav-item a:hover {
+        background-color: rgba(51, 51, 51, 0.7);
+        transform: scale(1.05); /* Slight scale effect on hover */
+        font-weight: bold;
+    }
+
+    .nav-list.show {
+        transform: translateX(0);
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: -25%;
+        background-color: rgba(51, 51, 51, 0.7);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        min-width: 200px;
+        z-index: 2;
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    /* Ensure header is visible */
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(51, 51, 51, 0.9);
+        z-index: 1001;
+    }
+}
